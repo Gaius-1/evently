@@ -4,19 +4,19 @@ import { getEventsByUser, getUpcomingEvents } from '@/lib/actions/event.actions'
 import { getOrdersByUser } from '@/lib/actions/order.actions'
 import { IOrder } from '@/lib/database/models/order.model'
 import { SearchParamProps } from '@/types'
-import { auth, useUser } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs'
 import Link from 'next/link'
 import React from 'react'
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
-  const { user } = useUser();
+  // const { user } = useUser();
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
   // Replace with the actual array of allowed email addresses
-  const allowedEmailsArray = ["agbofrederick56@gmail.com", "user2@example.com"];
+  // const allowedEmailsArray = ["agbofrederick56@gmail.com", "user2@example.com"];
   // Extract the primary email address from user.primaryEmailAddress
-  const primaryEmail: string | undefined = user?.primaryEmailAddress?.emailAddress;
+  // const primaryEmail: string | undefined = user?.primaryEmailAddress?.emailAddress;
 
   const ordersPage = Number(searchParams?.ordersPage) || 1;
   const eventsPage = Number(searchParams?.eventsPage) || 1;
@@ -29,7 +29,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const upcomingEvents = await getUpcomingEvents({ page: UpcomingEventsPage, limit: 6 })
 
   // Check if the user's email is in the allowed emails array
-  const isUserAllowed = primaryEmail && allowedEmailsArray.includes(primaryEmail);
+  // const isUserAllowed = primaryEmail && allowedEmailsArray.includes(primaryEmail);
 
   return (
     <>
@@ -57,7 +57,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           totalPages={orders?.totalPages}
         />
       </section>
-
+      
       {/* Events Organized */}
       {/* { isUserAllowed && (
         <><section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
