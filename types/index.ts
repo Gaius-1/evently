@@ -63,6 +63,11 @@ export type GetAllEventsParams = {
   page: number
 }
 
+export type UpcomingEventsParams = {
+  limit: number
+  page: number
+}
+
 export type GetEventsByUserParams = {
   userId: string
   limit?: number

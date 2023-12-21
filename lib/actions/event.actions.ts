@@ -13,6 +13,7 @@ import {
   UpdateEventParams,
   DeleteEventParams,
   GetAllEventsParams,
+  UpcomingEventsParams,
   GetEventsByUserParams,
   GetRelatedEventsByCategoryParams,
 } from '@/types'
@@ -108,6 +109,34 @@ export async function getAllEvents({ query, limit = 6, page, category }: GetAllE
     const skipAmount = (Number(page) - 1) * limit
     const eventsQuery = Event.find(conditions)
       .sort({ createdAt: 'desc' })
+      .skip(skipAmount)
+      .limit(limit)
+
+    const events = await populateEvent(eventsQuery)
+    const eventsCount = await Event.countDocuments(conditions)
+
+    return {
+      data: JSON.parse(JSON.stringify(events)),
+      totalPages: Math.ceil(eventsCount / limit),
+    }
+  } catch (error) {
+    handleError(error)
+  }
+}
+
+// GET UPCOMING EVENTS
+export async function getUpcomingEvents({ limit = 6, page }: UpcomingEventsParams) {
+  try {
+    await connectToDatabase()
+
+    const currentDate = new Date()
+    const conditions = {
+      date: { $gte: currentDate }, // Filter events with a date greater than or equal to the current date
+    }
+
+    const skipAmount = (Number(page) - 1) * limit
+    const eventsQuery = Event.find(conditions)
+      .sort({ date: 'asc' }) // Sort events by date in ascending order (upcoming first)
       .skip(skipAmount)
       .limit(limit)
 
