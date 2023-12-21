@@ -1,6 +1,6 @@
 import Collection from '@/components/shared/Collection'
 import { Button } from '@/components/ui/button'
-import { getEventsByUser, getUpcomingEvents, getAllEvents } from '@/lib/actions/event.actions'
+import { getEventsByUser, getUpcomingEvents } from '@/lib/actions/event.actions'
 import { getOrdersByUser } from '@/lib/actions/order.actions'
 import { IOrder } from '@/lib/database/models/order.model'
 import { SearchParamProps } from '@/types'
@@ -8,9 +8,8 @@ import { auth, useUser } from '@clerk/nextjs'
 import Link from 'next/link'
 import React from 'react'
 
-const { user } = useUser();
-
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
+  const { user } = useUser();
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
