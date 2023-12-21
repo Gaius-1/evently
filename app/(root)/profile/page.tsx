@@ -84,6 +84,18 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           </section></>
       )} */}
 
+      {/* Recent Events Organized */}
+      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
+        <div className="wrapper flex items-center justify-center sm:justify-between">
+          <h3 className='h3-bold text-center sm:text-left'>Upcoming Events</h3>
+          <Button asChild size="lg" className="button hidden sm:flex">
+            <Link href="/#events">
+              View More
+            </Link>
+          </Button>
+        </div>
+      </section>
+      
       <section className="wrapper my-8">
         <Collection 
           data={upcomingEvents?.data}
@@ -95,18 +107,6 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           urlParamName="eventsPage"
           totalPages={upcomingEvents?.totalPages}
         />
-      </section>
-
-      {/* Recent Events Organized */}
-      <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
-        <div className="wrapper flex items-center justify-center sm:justify-between">
-          <h3 className='h3-bold text-center sm:text-left'>Upcoming Events</h3>
-          <Button asChild size="lg" className="button hidden sm:flex">
-            <Link href="/#events">
-              View More
-            </Link>
-          </Button>
-        </div>
       </section>
 
     </>
