@@ -6,23 +6,12 @@ import { IOrder } from '@/lib/database/models/order.model'
 import { SearchParamProps } from '@/types'
 import { auth, useUser } from '@clerk/nextjs'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
+import { ProfileClient } from '@/components/shared/ProfileClient';
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
-  const { user } = useUser();
-  const [userEmail, setUserEmail] = useState<string | undefined>(undefined);
-
-  // Fetch user data and set the email
-  useEffect(() => {
-    const fetchUserData = async () => {
-      // Use Clerk's user object to get user data
-      setUserEmail(user?.primaryEmailAddress?.emailAddress);
-    };
-
-    fetchUserData();
-  }, [user]);
 
   const ordersPage = Number(searchParams?.ordersPage) || 1;
   const eventsPage = Number(searchParams?.eventsPage) || 1;
@@ -34,6 +23,9 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   // Specify the allowed email
   const allowedEmail = "agbofrederick56@gmail.com";
 
+  // Import and use the client-side component
+  const { userEmail } = ProfileClient();
+  
   // Check if the user's email matches the allowed email
   const isUserAllowed = userEmail === allowedEmail;
 
