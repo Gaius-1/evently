@@ -1,7 +1,6 @@
-'use client'
-
+// components/ProfileClient.tsx
 import { useUser } from '@clerk/nextjs';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const ProfileClient = () => {
   const { user } = useUser();
@@ -13,7 +12,9 @@ export const ProfileClient = () => {
       setUserEmail(user?.primaryEmailAddress?.emailAddress);
     };
 
-    fetchUserData();
+    if (user) {
+      fetchUserData();
+    }
   }, [user]);
 
   return { userEmail };
