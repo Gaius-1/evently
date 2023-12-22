@@ -1,3 +1,5 @@
+'use client'
+
 import Collection from '@/components/shared/Collection'
 import { Button } from '@/components/ui/button'
 import { getEventsByUser, getUpcomingEvents } from '@/lib/actions/event.actions'
