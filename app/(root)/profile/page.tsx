@@ -9,27 +9,27 @@ import Link from 'next/link'
 import React from 'react'
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
-  const { user } = useUser();
+  // const { user } = useUser();
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
   // Replace with the actual array of allowed email addresses
-  const allowedEmailsArray = ["agbofrederick56@gmail.com", "user2@example.com"];
+  // const allowedEmailsArray = ["agbofrederick56@gmail.com", "user2@example.com"];
   // Extract the primary email address from user.primaryEmailAddress
-  const primaryEmail: string | undefined = user?.primaryEmailAddress?.emailAddress;
+  // const primaryEmail: string | undefined = user?.primaryEmailAddress?.emailAddress;
 
   const ordersPage = Number(searchParams?.ordersPage) || 1;
-  const eventsPage = Number(searchParams?.eventsPage) || 1;
-  const UpcomingEventsPage = Number(searchParams?.page) || 1;
+  // const eventsPage = Number(searchParams?.eventsPage) || 1;
+  // const UpcomingEventsPage = Number(searchParams?.page) || 1;
 
   const orders = await getOrdersByUser({ userId, page: ordersPage})
 
   const orderedEvents = orders?.data.map((order: IOrder) => order.event) || [];
-  const organizedEvents = await getEventsByUser({ userId, page: eventsPage })
-  const upcomingEvents = await getUpcomingEvents({ page: UpcomingEventsPage, limit: 6 })
+  // const organizedEvents = await getEventsByUser({ userId, page: eventsPage })
+  // const upcomingEvents = await getUpcomingEvents({ page: UpcomingEventsPage, limit: 6 })
 
   // Check if the user's email is in the allowed emails array
-  const isUserAllowed = primaryEmail && allowedEmailsArray.includes(primaryEmail);
+  // const isUserAllowed = primaryEmail && allowedEmailsArray.includes(primaryEmail);
 
   return (
     <>
@@ -59,7 +59,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       </section>
       
       {/* Events Organized */}
-      { isUserAllowed && (
+      {/* { isUserAllowed && (
         <><section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
             <div className="wrapper flex items-center justify-center sm:justify-between">
               <h3 className='h3-bold text-center sm:text-left'>Events Organized By You</h3>
@@ -82,7 +82,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
               totalPages={organizedEvents?.totalPages} 
             />
           </section></>
-      )}
+      )} */}
 
       {/* Recent Events Organized */}
       {/* <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
