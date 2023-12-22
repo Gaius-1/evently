@@ -1,4 +1,6 @@
-// components/ProfileClient.tsx
+// components/shared/ProfileClient.tsx
+'use client'
+
 import { useUser } from '@clerk/nextjs';
 import { useEffect, useState } from 'react';
 
