@@ -25,7 +25,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
 
   // Import and use the client-side component
   const { userEmail } = ProfileClient();
-  
+
   // Check if the user's email matches the allowed email
   const isUserAllowed = userEmail === allowedEmail;
 
