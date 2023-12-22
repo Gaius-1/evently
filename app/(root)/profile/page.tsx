@@ -7,28 +7,16 @@ import { SearchParamProps } from '@/types'
 import { auth } from '@clerk/nextjs'
 import Link from 'next/link'
 import React from 'react'
-import { ProfileClient } from '@/components/shared/ProfileClient';
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
 
   const ordersPage = Number(searchParams?.ordersPage) || 1;
-  const eventsPage = Number(searchParams?.eventsPage) || 1;
+  // const eventsPage = Number(searchParams?.eventsPage) || 1;
 
   const orders = await getOrdersByUser({ userId, page: ordersPage });
   const orderedEvents = orders?.data.map((order: IOrder) => order.event) || [];
-  const organizedEvents = await getEventsByUser({ userId, page: eventsPage });
-
-  // Specify the allowed email
-  const allowedEmail = "agbofrederick56@gmail.com";
-
-  // Import and use the client-side component
-  const { userEmail } = ProfileClient();
-  console.log(userEmail)
-
-  // Check if the user's email matches the allowed email
-  const isUserAllowed = userEmail === allowedEmail;
 
   return (
     <>
@@ -56,7 +44,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           totalPages={orders?.totalPages}
         />
       </section>
-      
+
       {/* Additional sections... */}
     </>
   );
