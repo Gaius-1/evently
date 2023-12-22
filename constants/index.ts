@@ -3,14 +3,14 @@ export const headerLinks = [
     label: 'Home',
     route: '/',
   },
-  // {
-  //   label: 'About Us',
-  //   route: '/aboutus',
-  // },
-  // {
-  //   label: 'Contacts',
-  //   route: '/contacts',
-  // },
+  {
+    label: 'About Us',
+    route: '/aboutus',
+  },
+  {
+    label: 'Contacts',
+    route: '/contacts',
+  },
   {
     label: 'Orders',
     route: '/organized',
