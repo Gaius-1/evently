@@ -12,8 +12,8 @@ export const headerLinks = [
     route: '/contacts',
   },
   {
-    label: 'Create Event',
-    route: '/events/create',
+    label: 'Orders',
+    route: '/organized',
   },
   {
     label: 'My Tickets',

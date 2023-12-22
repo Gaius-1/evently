@@ -23,7 +23,7 @@ const NavItems = () => {
 
         // Check if the link is 'Create Event' and the user email is in the allowed array
         const isCreateEventVisible =
-          link.label !== "Create Event" || (primaryEmail && allowedEmailsArray.includes(primaryEmail));
+          link.label !== "Orders" || (primaryEmail && allowedEmailsArray.includes(primaryEmail));
           
         return (
           isCreateEventVisible && (

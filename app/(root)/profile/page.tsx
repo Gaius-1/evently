@@ -4,7 +4,7 @@ import { getEventsByUser, getUpcomingEvents } from '@/lib/actions/event.actions'
 import { getOrdersByUser } from '@/lib/actions/order.actions'
 import { IOrder } from '@/lib/database/models/order.model'
 import { SearchParamProps } from '@/types'
-import { auth, useUser } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs'
 import Link from 'next/link'
 import React from 'react'
 import { ProfileClient } from '@/components/shared/ProfileClient';
@@ -56,35 +56,7 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
           totalPages={orders?.totalPages}
         />
       </section>
-
-      {/* Events Organized */}
-      {isUserAllowed && (
-        <>
-          <section className="bg-primary-50 bg-dotted-pattern bg-cover bg-center py-5 md:py-10">
-            <div className="wrapper flex items-center justify-center sm:justify-between">
-              <h3 className='h3-bold text-center sm:text-left'>Events Organized By You</h3>
-              <Button asChild size="lg" className="button hidden sm:flex">
-                <Link href="/events/create">
-                  Create New Event
-                </Link>
-              </Button>
-            </div>
-          </section>
-          <section className="wrapper my-8">
-            <Collection
-              data={organizedEvents?.data}
-              emptyTitle="No events have been created yet"
-              emptyStateSubtext="Go create some now"
-              collectionType="Events_Organized"
-              limit={3}
-              page={eventsPage}
-              urlParamName="eventsPage"
-              totalPages={organizedEvents?.totalPages} 
-            />
-          </section>
-        </>
-      )}
-
+      
       {/* Additional sections... */}
     </>
   );
