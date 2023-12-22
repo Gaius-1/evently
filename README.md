@@ -26,7 +26,7 @@
 
 ## <a name="introduction">🤖 Introduction</a>
 
-Built on Next.js 14, the events application stands as a comprehensive, full-stack platform for organizing and managing events. It serves as a hub, spotlighting diverse events taking place globally. Featuring seamless payment processing through Paystack, you have the capability to purchase tickets for any event or even initiate and manage your own events.
+Built on Next.js 14, the events application stands as a comprehensive, full-stack platform for organizing and managing events. It serves as a hub, spotlighting diverse events taking place globally. Featuring seamless payment processing through Stripe, you have the capability to purchase tickets for any event or even initiate and manage your own events.
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
@@ -34,7 +34,7 @@ Built on Next.js 14, the events application stands as a comprehensive, full-stac
 - Next.js
 - TypeScript
 - TailwindCSS
-- Paystack
+- Stripe
 - Zod
 - React Hook Form
 - Shadcn
@@ -58,7 +58,7 @@ Built on Next.js 14, the events application stands as a comprehensive, full-stac
     
 👉 **New Category:** Dynamic categorization allows for the seamless addition of new event categories, keeping your platform adaptable.
     
-👉 **Checkout and Pay with Paystack:** Smooth and secure payment transactions using Paystack, enhancing user experience during the checkout process.
+👉 **Checkout and Pay with Stripe:** Smooth and secure payment transactions using Stripe, enhancing user experience during the checkout process.
     
 👉 **Event Orders:** Comprehensive order management system, providing a clear overview of all event-related transactions.
     
